@@ -14,12 +14,12 @@
 }
 
 body{
-  padding: 20px;
+  padding: 0px;
 }
 form{
   padding: 10px;
 }
-.errors{
+#errors{
   color: red;
 }
 

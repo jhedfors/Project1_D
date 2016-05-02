@@ -14,10 +14,6 @@ class Wishlist_model extends CI_Model {
 		$this->db->query($query, $values);
 		return true;
 	}
-	// public function index_users(){
-	// 	$query = "SELECT id, name, alias, email FROM users";
-	// 	return $this->db->query($query)->result_array();
-	// }
 	public function get_first_name($name){
 		$first_name ='';
 		for ($i=0; $i < strlen($name); $i++) {

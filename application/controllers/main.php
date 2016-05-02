@@ -28,7 +28,7 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules("confirm_pw", "Confirmed Password", "trim|required|matches[password]");
 		$this->form_validation->set_rules("hire_date", "Hire Date", "trim|required");
 		if($this->form_validation->run() === FALSE)		{
-			$this->session->set_userdata('errors_reg',[validation_errors()]);
+			$this->session->set_flashdata('errors',[validation_errors()]);
 			$this->load->view('login_reg_view');
 		}
 		else{
@@ -65,7 +65,6 @@ class Main extends CI_Controller {
 			return FALSE;
 		}
 		$this->session->set_userdata('active_id' ,$record['id']);
-
 		$this->session->set_userdata('first_name' ,$record['first_name']);
 		return TRUE;
 	}
@@ -73,9 +72,7 @@ class Main extends CI_Controller {
 		$active_id = $this->session->userdata('active_id');
 		$data['not_on_list'] = $this->wishlist_model->show_not_on_list($active_id);
 		$data['on_list'] = $this->wishlist_model->show_on_list($active_id);
-
 		$this->load->view('dashboard_view',['data'=>$data]);
-
 	}
 	public function add_to_list($item){
 		$active_id = $this->session->userdata('active_id');
@@ -87,7 +84,6 @@ class Main extends CI_Controller {
 		$this->wishlist_model->remove_from_list($active_id,$item);
 		redirect('dashboard');
 	}
-
 	public function wish_items_view($id){
 		$data['wishers'] = $this->wishlist_model->show_users_for_item($id);
 		$data['item_info'] = $this->wishlist_model->show_item($id);
@@ -104,7 +100,6 @@ class Main extends CI_Controller {
 			$this->wishlist_model->create_item($post);
 			redirect('/dashboard');
 		}
-
 	}
 	public function delete_item($id){
 		$this->wishlist_model->delete_item($id);
@@ -113,16 +108,6 @@ class Main extends CI_Controller {
 	public function add_view(){
 		$this->load->view('add_view');
 	}
-	// public function add_to_list($item_id){
-	// 	$active_id = $this->session->userdata('active_id');
-	// 	$this->wishlist_model->add_to_list($active_id,$item_id);
-	// 	redirect('/dashboard');
-	// }
-	// public function remove_from_list($item_id){
-	// 	$active_id = $this->session->userdata('active_id');
-	// 	$this->wishlist_model->remove_from_list($active_id,$item_id);
-	// 	redirect('/dashboard');
-	// }
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('/');

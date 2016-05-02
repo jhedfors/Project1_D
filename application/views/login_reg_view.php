@@ -10,16 +10,13 @@
   <link href="/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-   <div class="errors">
-     <?php echo validation_errors() ?>
-   </div>
-   <nav>
-     <div class="nav-wrapper">
-       <h4>Wishlist</h4>
-
-     </div>
-   </nav>
+  <?php
+      $this->load->view('partials/header.php');
+  ?>
    <div class="row">
+     <?php
+         $this->load->view('partials/flash_messages.php');
+     ?>
      <div class="col s6">
        <h4>Register</h4>
        <form class="" action="/main/register" method="post">
