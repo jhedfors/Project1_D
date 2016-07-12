@@ -31,7 +31,7 @@
          Users who add this product/item under their wish list:
        </p>
        <?php foreach ($data['wishers'] as $wisher) {
-         echo $wisher['first_name'];
+         echo $wisher['name'];
          echo '</br>';
        } ?>
      </div>

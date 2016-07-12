@@ -12,7 +12,7 @@
 </head>
 <body>
   <?php
-    $first_name = $this->session->userdata('first_name');
+    $name = $this->session->userdata('name');
 
     $active_id = $this->session->userdata('active_id');
    ?>
@@ -23,7 +23,7 @@
    </div>
    <div class="row">
      <div class="col s12">
-       <h4>Welcome, <?php echo $first_name; ?>!</h4>
+       <h4>Welcome, <?php echo $name; ?>!</h4>
        <div class="row">
          <div class="col s12">
            <h5>
@@ -52,7 +52,7 @@
                foreach ($data['on_list'] as $on_list) {
                  echo "<tr>";
                  echo "<td><a href='/wish_items/".$on_list['item_id']."'>".$on_list['description']."</a></td>";
-                 echo "<td>".$on_list['first_name']."</td>";
+                 echo "<td>".$on_list['name']."</td>";
                  echo "<td>".$on_list['date_added']."</td>";
                  if ($on_list['user_id'] == $active_id) {
                     echo "<td><a href='/main/delete_item/".$on_list['item_id']."'>Delete</a></td>";
@@ -94,7 +94,7 @@
                 foreach ($data['not_on_list'] as $not_on_list) {
                   echo "<tr>";
                  echo "<td><a href='/wish_items/".$not_on_list['item_id']."'>".$not_on_list['description']."</a></td>";
-                  echo "<td>".$not_on_list['first_name']."</td>";
+                  echo "<td>".$not_on_list['name']."</td>";
                   echo "<td>".$not_on_list['date_added']."</td>";
                   echo "<td><a href='/add_to_list/".$not_on_list['item_id']."'>Add to my wishlist</a></td>";
                   echo "</tr>";

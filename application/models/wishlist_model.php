@@ -6,26 +6,12 @@ class Wishlist_model extends CI_Model {
 	}
 	public function register($post){
 		$password = do_hash($post['password']);
-		$first_name = $this->get_first_name($post['name']);
-		$query = "INSERT INTO users (name, first_name, username, password, hire_date, created_at, modified_at) VALUES(?,?,?,?,?,NOW(),NOW());
+		$query = "INSERT INTO users (name, username, password, hire_date, created_at, modified_at) VALUES(?,?,?,?,NOW(),NOW());
 ";
 		$values =
-			 ["{$post['name']}",$first_name,"{$post['username']}",$password,"{$post['hire_date']}"];
+			 ["{$post['name']}","{$post['username']}",$password,"{$post['hire_date']}"];
 		$this->db->query($query, $values);
 		return true;
-	}
-	public function get_first_name($name){
-		$first_name ='';
-		for ($i=0; $i < strlen($name); $i++) {
-			if ($name[$i] == ' ') {
-				break;
-			}
-			else {
-				$first_name.=$name[$i];
-			}
-		};
-
-		return $first_name;
 	}
 
 	public function show_by_id($id){
@@ -58,7 +44,7 @@ class Wishlist_model extends CI_Model {
 	}
 	public function show_not_on_list($active_id){
 		$query =
-			"SELECT items.id as item_id, users.id as user_id, users.first_name as first_name, description, items.created_at as date_added from items
+			"SELECT items.id as item_id, users.id as user_id, users.name as name, description, items.created_at as date_added from items
 			LEFT JOIN users ON users.id = items.user_id
 			LEFT JOIN wishlist on wishlist.item_id = items.id
 			WHERE NOT items.id in
@@ -71,7 +57,7 @@ class Wishlist_model extends CI_Model {
 	}
 	public function show_on_list($active_id){
 		$query =
-			"SELECT DISTINCT items.id as item_id, users.id as user_id, users.first_name as first_name, description, items.created_at as date_added from items
+			"SELECT DISTINCT items.id as item_id, users.id as user_id, users.name as name, description, items.created_at as date_added from items
 			LEFT JOIN users ON users.id = items.user_id
 			LEFT JOIN wishlist on wishlist.item_id = items.id
 			WHERE wishlist.user_id = ? OR items.user_id = ?";
@@ -92,7 +78,7 @@ class Wishlist_model extends CI_Model {
 	}
 	public function show_users_for_item($id){
 		$query =
-			"SELECT users.first_name as first_name, items.description as item_description from wishlist
+			"SELECT users.name as name, items.description as item_description from wishlist
 			LEFT JOIN users on users.id = wishlist.user_id
 			LEFT JOIN items on items.id = wishlist.item_id
 			WHERE item_id = ?";

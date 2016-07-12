@@ -2,6 +2,9 @@ select * from items;
 select * from users;
 select * from wishlist;
 
+
+
+
 INSERT INTO items (user_id, description, created_at, modified_at) VALUES('2','Oneplus 4', NOW(),NOW());
 
 INSERT INTO users (name, username, password, hire_date, created_at, modified_at) VALUES('Jeff Hedfors','jhedfors', 'lajsdlfj', '2016-01-01',NOW(),NOW());

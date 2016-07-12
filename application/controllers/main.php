@@ -36,7 +36,7 @@ class Main extends CI_Controller {
 			if($this->wishlist_model->register($post) ){
 				$record = $this->wishlist_model->show_by_username($post['username']);
 				$this->session->set_userdata('active_id' ,$record['id']);
-				$this->session->set_userdata('first_name' ,$record['first_name']);
+				$this->session->set_userdata('name' ,$record['name']);
 				redirect('dashboard');
 			}
 			redirect('unanticipated_error');
@@ -65,7 +65,7 @@ class Main extends CI_Controller {
 			return FALSE;
 		}
 		$this->session->set_userdata('active_id' ,$record['id']);
-		$this->session->set_userdata('first_name' ,$record['first_name']);
+		$this->session->set_userdata('name' ,$record['name']);
 		return TRUE;
 	}
 	public function dashboard_view(){
