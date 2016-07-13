@@ -19,7 +19,7 @@
      ?>
      <div class="col s6">
        <h4>Register</h4>
-       <form class="" action="/main/register" method="post">
+       <form class="" action="/users/register" method="post">
          <label for="name">Name:</label><input type="text" name="name" value="">
          <label for="username">Username:</label><input type="text" name="username" value="">
          <label for="password">Password:</label><input type="password" name="password" value="">
@@ -33,7 +33,7 @@
      </div>
      <div class="col s6">
        <h4>Login</h4>
-       <form class="" action="/main/login" method="post">
+       <form class="" action="/users/login" method="post">
          <label for="username">Username:</label><input type="text" name="username">
          <label for="password">Password:</label><input type="password" name="password">
          <input type="submit"value="Login">

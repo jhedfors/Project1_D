@@ -24,7 +24,7 @@
    <div class="row">
      <div class="col s12">
        <h4>Create a New Wish List Item</h4>
-       <form class="" action="/main/add_form" method="post">
+       <form class="" action="/wishlist/add_form" method="post">
          <label for="description">Item/Product</label>
          <input type="text" name="description" value="">
          <input type="hidden" name="active_id" value="<?php echo $active_id ?>">

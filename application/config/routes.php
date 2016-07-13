@@ -1,16 +1,16 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$route['default_controller'] = "/main";
-$route['main'] = "/main/login_reg_view";
-$route['dashboard'] = "/main/dashboard_view";
-$route['add'] = "/main/add_view";
-$route['add_form'] = "/main/add_form";
+$route['default_controller'] = "/users";
+$route['users'] = "/users/login_reg_view";
+$route['dashboard'] = "/wishlist/dashboard_view";
+$route['add'] = "/wishlist/add_view";
+$route['add_form'] = "/wishlist/add_form";
 
-$route['remove_from_list/(:num)'] = "/main/remove_from_list/$1";
-$route['add_to_list/(:num)'] = "/main/add_to_list/$1";
-$route['wish_items/(:num)'] = "main/wish_items_view/$1";
-$route['wish_items/create'] = "main/create_view";
-$route['logout'] = "/main/logout";
+$route['remove_from_list/(:num)'] = "/wishlist/remove_from_list/$1";
+$route['add_to_list/(:num)'] = "/wishlist/add_to_list/$1";
+$route['wish_items/(:num)'] = "wishlist/wish_items_view/$1";
+$route['wish_items/create'] = "wishlist/create_view";
+$route['logout'] = "/users/logout";
 $route['404_override'] = '';
 
 

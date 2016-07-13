@@ -4,7 +4,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>WishList</title>
-
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="/assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -13,7 +12,6 @@
 <body>
   <?php
     $name = $this->session->userdata('name');
-
     $active_id = $this->session->userdata('active_id');
    ?>
    <div class="row">
@@ -29,7 +27,6 @@
            <h5>
              Your Wish List
            </h5>
-
           <table>
             <thead>
               <tr>
@@ -55,20 +52,16 @@
                  echo "<td>".$on_list['name']."</td>";
                  echo "<td>".$on_list['date_added']."</td>";
                  if ($on_list['user_id'] == $active_id) {
-                    echo "<td><a href='/main/delete_item/".$on_list['item_id']."'>Delete</a></td>";
+                    echo "<td><a href='/wishlist/delete_item/".$on_list['item_id']."'>Delete</a></td>";
                  }
                  else {
                      echo "<td><a href='/remove_from_list/".$on_list['item_id']."'>Remove from List</a></td>";
                  }
-
                  echo "</tr>";
-                 // var_dump($not_on_list);
-
                }
              ?>
             </tbody>
           </table>
-
            <h5>
              Other User's Wish List
            </h5>
@@ -98,8 +91,6 @@
                   echo "<td>".$not_on_list['date_added']."</td>";
                   echo "<td><a href='/add_to_list/".$not_on_list['item_id']."'>Add to my wishlist</a></td>";
                   echo "</tr>";
-                  // var_dump($not_on_list);
-
                 }
               ?>
              </tbody>
@@ -107,7 +98,6 @@
            <p>
              <a href="/add">Add Item</a>
            </p>
-
          </div>
          <div class="errors">
            <?php
@@ -118,20 +108,14 @@
              }
              $this->session->unset_userdata('errors_add');
            }
-
            ?>
-
-
          </div>
-
        </div>
      </div>
    </div>
-
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/assets/js/materialize.js"></script>
   <script src="/assets/js/init.js"></script>
-
 </body>
 </html>
