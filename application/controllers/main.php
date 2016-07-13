@@ -14,8 +14,9 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules("username", "Username", "trim|required");
 		$this->form_validation->set_rules("password", "Password", "trim|required|callback_check_credentials");
 		if($this->form_validation->run() === FALSE)		{
-			$this->session->set_userdata('errors_login',[validation_errors()]);
-			$this->load->view('login_reg_view');
+			$this->session->set_flashdata('errors',[validation_errors()]);
+			redirect('/');
+
 		}
 		else{
 			redirect('dashboard');
