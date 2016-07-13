@@ -27,12 +27,9 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]");
 		$this->form_validation->set_rules("confirm_pw", "Confirmed Password", "trim|required|matches[password]");
 		$this->form_validation->set_rules("hire_date", "Hire Date", "trim|required");
-		var_dump($this->form_validation->run());
-		// die();
 		if($this->form_validation->run() === FALSE)		{
 			$this->session->set_flashdata('errors',[validation_errors()]);
-			// $this->load->view('login_reg_view');
-			redirect('/');	
+			redirect('/');
 
 		}
 		else{
@@ -49,8 +46,6 @@ class Main extends CI_Controller {
 	public function check_preexisting_username($post_username){
 		$record = $this->wishlist_model->show_by_username($post_username);
 		if($record){
-			var_dump($record);
-			// die();
 			$this->form_validation->set_message('check_preexisting_username', '%s is already in use');
 			return FALSE;
 		}
